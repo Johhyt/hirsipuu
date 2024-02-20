@@ -17,6 +17,7 @@ const words = [
 
 let randomizeWord = ''
 let maskedWord = ''
+let arp = 0
 
 const newGame = () => {
     const random = Math.floor(Math.random() * 10) + 1
@@ -24,10 +25,11 @@ const newGame = () => {
     maskedWord = "*".repeat(randomizeWord.length)
     console.log(randomizeWord)
     output.innerHTML = maskedWord
+    arp = 0
 }
 
 const win = () => {
-    alert(`You have guessed right, the word is ${randomizeWord}.`)
+    alert(`Olet arvannut oikein, sana on ${randomizeWord}. Sinulla meni ${arp} arvausta.` )
     newGame()
 }
 
@@ -62,6 +64,9 @@ input.addEventListener('keypress',(e) => {
         } else {
             alert("You guessed wrong!")
         }
+        
+        span.innerHTML = arp
+        arp++
         input.value = ''
     }
 })
